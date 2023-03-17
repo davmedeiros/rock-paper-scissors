@@ -1,4 +1,4 @@
-console.log(playRound('rock', getComputerChoice()));
+console.log(playRound('scissors', getComputerChoice()));
 
 // Randomly picks either Rock, Paper or Scissors
 function getComputerChoice() {
@@ -12,32 +12,42 @@ function playRound(playerSelection, computerSelection) {
   // Normalize inputs to lowercase
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-  console.log(playerSelection);
-  console.log(computerSelection);
+
+  // Solution using iteration
+  const choices = ['rock', 'paper', 'scissors']
+
+  // Check if the choice is valid 
+  for (let i = 0, length = choices.length; i < length; i++) {
+    if (playerSelection === choices[i]) {
+      // The choice is valid
+      break;
+    }
+
+    if (i === length - 1) {
+      return 'Invalid choice';
+    }
+  }
 
   // If choices are the same it's a tie
   if (playerSelection === computerSelection) {
     return 'It\'s a tie';
   }
 
+  // TODO: Improve this algorithm using some kind of iteration
   let isWinner = false;
-
-  const ROCK = 'rock';
-  const PAPER = 'paper';
-  const SCISSORS = 'scissors'
   // Rock beats scissors
-  if (playerSelection === ROCK) {
-    isWinner = (computerSelection === SCISSORS);
+  if (playerSelection === choices[0]) {
+    isWinner = (computerSelection === choices[2]);
   }
 
   // Paper beats rock
-  if (playerSelection === PAPER) {
-    isWinner = (computerSelection === ROCK);
+  if (playerSelection === choices[1]) {
+    isWinner = (computerSelection === choices[0]);
   }
 
   // Scissors beats paper
-  if (playerSelection === SCISSORS) {
-    isWinner = (computerSelection === PAPER);
+  if (playerSelection === choices[2]) {
+    isWinner = (computerSelection === choices[1]);
   }
 
   // Check if player own or lose and format output
@@ -47,7 +57,4 @@ function playRound(playerSelection, computerSelection) {
   else {
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
-
-  // Return round result
-  return 'Invalid choice';
 }
