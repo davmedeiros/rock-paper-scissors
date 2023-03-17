@@ -2,7 +2,7 @@ console.log(playRound('rock', getComputerChoice()));
 
 // Randomly picks either Rock, Paper or Scissors
 function getComputerChoice() {
-  choices = ['rock', 'paper', 'scissors'];
+  const choices = ['rock', 'paper', 'scissors'];
 
   return choices[Math.floor(Math.random() * 3)];
 }
@@ -20,22 +20,32 @@ function playRound(playerSelection, computerSelection) {
     return 'It\'s a tie';
   }
 
+  let isWinner = false;
+
   const ROCK = 'rock';
   const PAPER = 'paper';
   const SCISSORS = 'scissors'
   // Rock beats scissors
   if (playerSelection === ROCK) {
-    return (computerSelection === SCISSORS) ? 'You win!' : 'You lose!';
+    isWinner = (computerSelection === SCISSORS);
   }
 
   // Paper beats rock
   if (playerSelection === PAPER) {
-    return (computerSelection === ROCK) ? 'You win!' : 'You lose!';
+    isWinner = (computerSelection === ROCK);
   }
 
   // Scissors beats paper
   if (playerSelection === SCISSORS) {
-    return (computerSelection === PAPER) ? 'You win!' : 'You lose!';
+    isWinner = (computerSelection === PAPER);
+  }
+
+  // Check if player own or lose and format output
+  if (isWinner) {
+    return `You won! ${playerSelection} beats ${computerSelection}.`;
+  }
+  else {
+    return `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
 
   // Return round result
