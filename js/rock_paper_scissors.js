@@ -14,19 +14,17 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
-  // Solution using iteration
-  const choices = ['rock', 'paper', 'scissors']
+  // Stores what key beats what value 
+  // (ex. 'rock': 'scissors' means that rock beats scissors)
+  const choices = {
+    'rock': 'scissors',
+    'paper': 'rock',
+    'scissors': 'paper'
+  }
 
   // Check if the choice is valid 
-  for (let i = 0, length = choices.length; i < length; i++) {
-    if (playerSelection === choices[i]) {
-      // The choice is valid
-      break;
-    }
-
-    if (i === length - 1) {
-      return 'Invalid choice';
-    }
+  if (!choices[playerSelection]) {
+    return 'Invalid choice';
   }
 
   // If choices are the same it's a tie
@@ -34,25 +32,8 @@ function playRound(playerSelection, computerSelection) {
     return 'It\'s a tie';
   }
 
-  // TODO: Improve this algorithm using some kind of iteration
-  let isWinner = false;
-  // Rock beats scissors
-  if (playerSelection === choices[0]) {
-    isWinner = (computerSelection === choices[2]);
-  }
-
-  // Paper beats rock
-  if (playerSelection === choices[1]) {
-    isWinner = (computerSelection === choices[0]);
-  }
-
-  // Scissors beats paper
-  if (playerSelection === choices[2]) {
-    isWinner = (computerSelection === choices[1]);
-  }
-
-  // Check if player own or lose and format output
-  if (isWinner) {
+  // Check if player won or lose and format output
+  if (computerSelection === choices[playerSelection]) {
     return `You won! ${playerSelection} beats ${computerSelection}.`;
   }
   else {
