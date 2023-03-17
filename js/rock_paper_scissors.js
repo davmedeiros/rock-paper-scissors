@@ -1,4 +1,5 @@
-console.log(playRound('scissors', getComputerChoice()));
+// console.log(playRound('scissors', getComputerChoice()));
+game();
 
 // Randomly picks either Rock, Paper or Scissors
 function getComputerChoice() {
@@ -56,5 +57,13 @@ function playRound(playerSelection, computerSelection) {
   }
   else {
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
+  }
+}
+
+function game() {
+  let playerSelection = '';
+  for (let i = 0; i < 5; i++) {
+    playerSelection = prompt('Rock, Paper or Scissors?');
+    console.log(playRound(playerSelection, getComputerChoice()));
   }
 }
