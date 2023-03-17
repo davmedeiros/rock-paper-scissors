@@ -1,4 +1,3 @@
-// console.log(playRound('scissors', getComputerChoice()));
 game();
 
 // Randomly picks either Rock, Paper or Scissors
@@ -10,7 +9,6 @@ function getComputerChoice() {
 
 // Plays a round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection) {
-  // Normalize inputs to lowercase
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
@@ -22,17 +20,14 @@ function playRound(playerSelection, computerSelection) {
     'scissors': 'paper'
   }
 
-  // Check if the choice is valid 
   if (!choices[playerSelection]) {
     return 'Invalid choice';
   }
 
-  // If choices are the same it's a tie
   if (playerSelection === computerSelection) {
     return 'It\'s a tie';
   }
 
-  // Check if player won or lose and format output
   if (computerSelection === choices[playerSelection]) {
     return `You won! ${playerSelection} beats ${computerSelection}.`;
   }
@@ -41,6 +36,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Play game
 function game() {
   let playerSelection = '';
   for (let i = 0; i < 5; i++) {
