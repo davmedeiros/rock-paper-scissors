@@ -1,4 +1,4 @@
-console.log(getComputerChoice());
+console.log(playRound('rock', getComputerChoice()));
 
 // Randomly picks either Rock, Paper or Scissors
 function getComputerChoice() {
@@ -9,24 +9,35 @@ function getComputerChoice() {
 
 // Plays a round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection) {
-  // If choices are the same
-    // Issa tie
+  // Normalize inputs to lowercase
+  playerSelection = playerSelection.toLowerCase();
+  computerSelection = computerSelection.toLowerCase();
+  console.log(playerSelection);
+  console.log(computerSelection);
 
-  // If pS = rock and cS = paper
-    // Player loses
-  // If pS = rock and cS = scissors
-    // Player wins
+  // If choices are the same it's a tie
+  if (playerSelection === computerSelection) {
+    return 'It\'s a tie';
+  }
 
-  // If pS = paper and cS = rock
-    // Player wins
-  // If pS = paper and cS = scissors
-    // Player loses
-  
-  // If pS = scissors and cS = rock
-    // Player loses
-  // If pS = scissors and cS = paper
-    // Player wins
+  const ROCK = 'rock';
+  const PAPER = 'paper';
+  const SCISSORS = 'scissors'
+  // Rock beats scissors
+  if (playerSelection === ROCK) {
+    return (computerSelection === SCISSORS) ? 'You win!' : 'You lose!';
+  }
+
+  // Paper beats rock
+  if (playerSelection === PAPER) {
+    return (computerSelection === ROCK) ? 'You win!' : 'You lose!';
+  }
+
+  // Scissors beats paper
+  if (playerSelection === SCISSORS) {
+    return (computerSelection === PAPER) ? 'You win!' : 'You lose!';
+  }
 
   // Return round result
-  return 'Max bidding. Better believe it.';
+  return 'Invalid choice';
 }
