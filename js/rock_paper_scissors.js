@@ -3,8 +3,7 @@ game();
 // Randomly picks either Rock, Paper or Scissors
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
-
-  return choices[Math.floor(Math.random() * 3)];
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
 // Plays a round of Rock Paper Scissors
