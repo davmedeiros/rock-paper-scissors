@@ -29,11 +29,17 @@ function playRound(playerSelection, computerSelection) {
 
   const WINNING_SCORE = 5;
   if (computerSelection === choices[playerSelection]) {
-    if (updateScore('player') >= WINNING_SCORE) return 'Player wins!';
+    if (updateScore('player') >= WINNING_SCORE) {
+      resetGame();
+      return 'Player wins!';
+    } 
     return `You won! ${playerSelection} beats ${computerSelection}.`;
   }
   else {
-    if (updateScore('computer') >= WINNING_SCORE) return 'Computer wins!';
+    if (updateScore('computer') >= WINNING_SCORE) {
+      resetGame();
+      return 'Computer wins!';
+    }
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
 }
@@ -45,6 +51,7 @@ function game() {
     button.addEventListener('click', (e) => {
       const resultContainer = document.querySelector('#results-container');
       const result = document.createElement('p');
+      result.classList.add('result');
       result.textContent = playRound(e.target.id, getComputerChoice());
       resultContainer.appendChild(result);
     });
@@ -54,4 +61,15 @@ function game() {
 function updateScore(winner) {
   const score = document.querySelector(`#${winner}.score`)
   return Number(score.textContent = Number(score.textContent) + 1);
+}
+
+function resetGame() {
+  const scores = document.querySelectorAll('.score');
+  scores.forEach(score => {
+    score.textContent = 0;
+  });
+  const results = document.querySelectorAll('.result');
+  results.forEach(result => {
+    result.remove();
+  });
 }
