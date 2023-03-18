@@ -37,5 +37,10 @@ function playRound(playerSelection, computerSelection) {
 
 // Play game
 function game() {
-  console.log('play');
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      console.log(playRound(e.target.id, getComputerChoice()));
+    });   
+  });
 }
