@@ -27,12 +27,13 @@ function playRound(playerSelection, computerSelection) {
     return 'It\'s a tie';
   }
 
+  const WINNING_SCORE = 5;
   if (computerSelection === choices[playerSelection]) {
-    updateScore('player');
+    if (updateScore('player') >= WINNING_SCORE) return 'Player wins!';
     return `You won! ${playerSelection} beats ${computerSelection}.`;
   }
   else {
-    updateScore('computer');
+    if (updateScore('computer') >= WINNING_SCORE) return 'Computer wins!';
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
 }
@@ -52,5 +53,5 @@ function game() {
 
 function updateScore(winner) {
   const score = document.querySelector(`#${winner}.score`)
-  score.textContent = Number(score.textContent) + 1;
+  return Number(score.textContent = Number(score.textContent) + 1);
 }
