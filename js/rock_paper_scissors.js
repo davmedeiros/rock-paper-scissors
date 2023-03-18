@@ -28,9 +28,11 @@ function playRound(playerSelection, computerSelection) {
   }
 
   if (computerSelection === choices[playerSelection]) {
+    updateScore('player');
     return `You won! ${playerSelection} beats ${computerSelection}.`;
   }
   else {
+    updateScore('computer');
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
 }
@@ -46,4 +48,9 @@ function game() {
       resultContainer.appendChild(result);
     });
   });
+}
+
+function updateScore(winner) {
+  const score = document.querySelector(`#${winner}.score`)
+  score.textContent = Number(score.textContent) + 1;
 }
