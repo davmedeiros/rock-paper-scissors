@@ -40,7 +40,10 @@ function game() {
   const buttons = document.querySelectorAll('button');
   buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-      console.log(playRound(e.target.id, getComputerChoice()));
-    });   
+      const resultContainer = document.querySelector('#results-container');
+      const result = document.createElement('p');
+      result.textContent = playRound(e.target.id, getComputerChoice());
+      resultContainer.appendChild(result);
+    });
   });
 }
