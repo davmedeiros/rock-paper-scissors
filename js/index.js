@@ -9,6 +9,12 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+    const choices = getAvailableChoices();
+
+    if (!choices.includes(playerSelection)) {
+        return `Invalid choice! \nAvailable choices: ${choices}`;
+    }
+
     let result = '';
 
     if (playerSelection == computerSelection) {
@@ -25,3 +31,12 @@ function playRound(playerSelection, computerSelection) {
 
     return result;
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt('Rock, paper or scissors?');
+        console.log(playRound(playerSelection, getComputerChoice()));       
+    }
+}
+
+game();
