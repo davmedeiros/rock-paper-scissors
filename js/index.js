@@ -28,12 +28,3 @@ function playRound(playerSelection, computerSelection) {
 
     return result;
 }
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Rock, paper or scissors?');
-        console.log(playRound(playerSelection, getComputerChoice()));
-    }
-}
-
-game();
