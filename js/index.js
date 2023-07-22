@@ -10,14 +10,11 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     const choices = getAvailableChoices();
-
-    if (!choices.includes(playerSelection)) {
-        return `Invalid choice! \nAvailable choices: ${choices}`;
-    }
-
     let result = '';
 
-    if (playerSelection == computerSelection) {
+    if (!choices.includes(playerSelection)) {
+        result = `Invalid choice! \nAvailable choices: ${choices}`;
+    } else if (playerSelection == computerSelection) {
         result = 'It\'s a tie!';
     } else {
         if (playerSelection == 'rock' && computerSelection == 'scissors' ||
@@ -35,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt('Rock, paper or scissors?');
-        console.log(playRound(playerSelection, getComputerChoice()));       
+        console.log(playRound(playerSelection, getComputerChoice()));
     }
 }
 
