@@ -1,3 +1,6 @@
+let playerPoints = 0;
+let computerPoints = 0;
+
 function getAvailableChoices() {
     return ['rock', 'paper', 'scissors'];
 }
@@ -21,8 +24,10 @@ function playRound(playerSelection, computerSelection) {
             playerSelection == 'paper' && computerSelection == 'rock' ||
             playerSelection == 'scissors' && computerSelection == 'paper') {
             result = `You Win! ${playerSelection} beats ${computerSelection}.`;
+            playerPoints++;
         } else {
             result = `You Lose! ${computerSelection} beats ${playerSelection}.`;
+            computerPoints++;
         }
     }
 
@@ -34,15 +39,20 @@ function playGame() {
     const screenResults = document.querySelector('#screen #results');
     const playerPointsScreen = document.querySelector('#player-points');
     const computerPointsScreen = document.querySelector('#computer-points');
-    let playerPoints = 0;
-    let computerPoints = 0;
-    
+
     controlsButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const result = document.createElement('p');
             result.textContent = playRound(button.textContent, getComputerChoice());
-            playerPointsScreen.textContent = ++playerPoints;
+            playerPointsScreen.textContent = playerPoints;
+            computerPointsScreen.textContent = computerPoints;
             screenResults.appendChild(result);
+
+            if (playerPoints >= 5 || computerPoints >= 5) {
+                const winningMessage = document.createElement('p');
+                winningMessage.textContent = `${(playerPoints > computerPoints) ? 'Player' : 'Computer'} won the game!!!`;
+                screenResults.appendChild(winningMessage);
+            }
         });
     });
 }
