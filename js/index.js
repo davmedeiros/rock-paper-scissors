@@ -32,11 +32,16 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     const controlsButtons = document.querySelectorAll('#controls button');
     const screenResults = document.querySelector('#screen #results');
+    const playerPointsScreen = document.querySelector('#player-points');
+    const computerPointsScreen = document.querySelector('#computer-points');
+    let playerPoints = 0;
+    let computerPoints = 0;
     
     controlsButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const result = document.createElement('p');
             result.textContent = playRound(button.textContent, getComputerChoice());
+            playerPointsScreen.textContent = ++playerPoints;
             screenResults.appendChild(result);
         });
     });
