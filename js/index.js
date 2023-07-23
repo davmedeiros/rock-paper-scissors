@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-function game() {
+function playGame() {
     const controlsButtons = document.querySelectorAll('#controls button');
 
     controlsButtons.forEach(button => {
@@ -39,4 +39,4 @@ function game() {
     });
 }
 
-game();
+playGame();
