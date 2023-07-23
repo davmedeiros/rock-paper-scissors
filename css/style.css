@@ -24,10 +24,12 @@ main {
     justify-content: center;
     align-items: center;
     height: 100%;
+    gap: 20px;
+    background-color: var(--secondary-color);
 }
 
 #controls {
-    width: 50%;
+    width: 1000px;
     display: flex;
     justify-content: space-around;
 }
@@ -44,4 +46,19 @@ main {
 
 #controls button:hover {
     background-color: var(--accent-color);
+}
+
+#screen {
+    display: flex;
+    background-color: var(--main-color);
+    width: 800px;
+    height: 400px;
+}
+
+#results,
+#points {
+    flex: 1;
+    border: 4px solid var(--accent-color);
+    font-size: 1.5rem;
+    padding: 10px;
 }
