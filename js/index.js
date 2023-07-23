@@ -31,10 +31,13 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame() {
     const controlsButtons = document.querySelectorAll('#controls button');
-
+    const screenResults = document.querySelector('#screen #results');
+    
     controlsButtons.forEach(button => {
         button.addEventListener('click', (e) => {
-            console.log(playRound(button.textContent, getComputerChoice()));
+            const result = document.createElement('p');
+            result.textContent = playRound(button.textContent, getComputerChoice());
+            screenResults.appendChild(result);
         });
     });
 }
