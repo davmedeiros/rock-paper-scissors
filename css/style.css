@@ -52,7 +52,7 @@ main {
     display: flex;
     background-color: var(--main-color);
     width: 800px;
-    height: 400px;
+    min-height: 400px;
 }
 
 #results,
