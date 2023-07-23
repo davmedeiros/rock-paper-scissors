@@ -28,3 +28,15 @@ function playRound(playerSelection, computerSelection) {
 
     return result;
 }
+
+function game() {
+    const controlsButtons = document.querySelectorAll('#controls button');
+
+    controlsButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log(playRound(button.textContent, getComputerChoice()));
+        });
+    });
+}
+
+game();
