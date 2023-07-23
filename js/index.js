@@ -34,6 +34,12 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
+function restartGame() {
+    playerPoints = 0;
+    computerPoints = 0;
+
+}
+
 function playGame() {
     const controlsButtons = document.querySelectorAll('#controls button');
     const screenResults = document.querySelector('#screen #results');
@@ -52,6 +58,9 @@ function playGame() {
                 const winningMessage = document.createElement('p');
                 winningMessage.textContent = `${(playerPoints > computerPoints) ? 'Player' : 'Computer'} won the game!!!`;
                 screenResults.appendChild(winningMessage);
+                controlsButtons.forEach(button => {
+                    button.disabled = true;
+                });
             }
         });
     });
