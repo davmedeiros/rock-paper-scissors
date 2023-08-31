@@ -1,2 +1,1 @@
-# rock-paper-scissors
-TOP - Rock Paper Scissors
+# TOP - Educational Project - Rock Paper Scissors
